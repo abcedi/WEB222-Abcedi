@@ -1,0 +1,37 @@
+
+> web222-assignment-2@7.0.0 test
+> jest --
+
+FAIL src/problem-05.test.js
+  ● Problem 05 - getObservationsByLocation() function › lat and lng values return an Array of expected results
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+       6 |   function expectSuitableArray(value, expectedLength) {
+       7 |     expect(Array.isArray(value)).toBe(true);
+    >  8 |     expect(value.length).toBe(expectedLength);
+         |                          ^
+       9 |   }
+      10 |
+      11 |   test('missing options object returns same Array as original', function () {
+
+      at toBe (src/problem-05.test.js:8:26)
+      at Object.expectSuitableArray (src/problem-05.test.js:23:5)
+
+PASS src/problem-03.test.js
+PASS src/problem-02.test.js
+PASS src/problem-08.test.js
+PASS src/problem-06.test.js
+PASS src/problem-04.test.js
+PASS src/problem-01.test.js
+PASS src/problem-07.test.js
+PASS src/problem-00.test.js
+
+Test Suites: 1 failed, 8 passed, 9 total
+Tests:       1 failed, 70 passed, 71 total
+Snapshots:   0 total
+Time:        0.849 s, estimated 1 s
+Ran all test suites.
