@@ -19,10 +19,31 @@ const { artists, songs } = window;
 // Dynamically create artist buttons and display default artist's songs on page load
 document.addEventListener("DOMContentLoaded", function () {
   const menu = document.getElementById("menu");
-  artists.forEach((artist) => {
-    const button = document.createElement("button");
+
+  // Dynamically create artist buttons and display the default artist's songs on page load
+  artists.forEach(artist => {
+    const button = document.createElement('button');
     button.textContent = artist.name;
-    button.addEventListener("click", () => displaySongsForArtist(artist.artistId));
+    button.dataset.artistImage = artist.imageUrl; // Ensure imageUrl is provided in the artist object
+    button.addEventListener('click', () => {
+      displaySongsForArtist(artist.artistId);
+      document.getElementById('selected-artist').textContent = `Songs by ${artist.name}`;
+    });
+
+    // Set up the hover effect for each button
+    button.onmouseover = function() {
+      this.style.backgroundImage = `url('${this.dataset.artistImage}')`;
+      this.style.backgroundSize = 'cover';
+      this.style.backgroundPosition = 'center';
+      this.style.backgroundRepeat = 'no-repeat';
+      this.style.opacity = '0.5';
+    };
+
+    button.onmouseout = function() {
+      this.style.backgroundImage = '';
+      this.style.opacity = '1';
+    };
+
     menu.appendChild(button);
   });
 
@@ -33,38 +54,61 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function displaySongsForArtist(artistId) {
-  const artist = artists.find((artist) => artist.artistId === artistId);
-  const filteredSongs = songs.filter((song) => song.artistId === artistId);
-  const tbodyRef = document.getElementById("songs");
+  const artist = artists.find(artist => artist.artistId === artistId);
+  const filteredSongs = songs.filter(song => song.artistId === artistId);
+  const cardContainerRef = document.getElementById("card-container");
   const selectedArtistElement = document.getElementById("selected-artist");
 
   // Update the selected artist's name and social media links
   selectedArtistElement.innerHTML = generateArtistHeader(artist);
 
-  // Clear previous songs and display new ones
-  tbodyRef.innerHTML = "";
-  filteredSongs.forEach((song) => tbodyRef.appendChild(createSongRow(song, artist)));
+  // Clear previous song cards and display new ones
+  cardContainerRef.innerHTML = '';
+  filteredSongs.forEach(song => {
+    const songCard = createSongCard(song);
+    cardContainerRef.appendChild(songCard);
+  });
 }
 
-function createSongRow(song, artist) {
-  const row = document.createElement("tr");
-  const explicitIcon = song.explicit
-    ? '<img src="./explicit.webp" alt="Explicit" style="height: 1em; vertical-align: text-bottom;">'
-    : "";
-  row.innerHTML = `
-        <td>
-            <a href="${song.url}" target="_blank">${song.title}</a> ${explicitIcon}
-        </td>
-        <td>${song.year}</td>
-        <td>${formatDuration(song.duration)}</td>
-    `;
+function createSongCard(song, artist) {
+  const card = document.createElement("div");
+  card.className = "song-card";
 
-  // Add a click event listener to log song details
-  row.addEventListener("click", () => {
+  const songImage = document.createElement("img");
+  songImage.className = "song-image";
+  songImage.src = song.imageUrl;
+  songImage.alt = `Cover image for ${song.title}`;
+  songImage.style.cursor = 'pointer';
+  songImage.addEventListener('click', () => window.open(song.url, '_blank'));
+
+  const songTitle = document.createElement("h3");
+  songTitle.textContent = song.title;
+  if (song.explicit) {
+    const explicitIcon = document.createElement("img");
+    explicitIcon.src = "./explicit.webp";
+    explicitIcon.alt = "Explicit";
+    explicitIcon.style.height = '1em';
+    explicitIcon.style.verticalAlign = 'text-bottom';
+    songTitle.appendChild(explicitIcon);
+  }
+
+  const songYear = document.createElement("p");
+  songYear.textContent = `Year Released: ${song.year}`;
+
+  const songDuration = document.createElement("p");
+  songDuration.textContent = `Duration: ${formatDuration(song.duration)}`;
+
+  // Append all the elements to the card
+  card.appendChild(songImage);
+  card.appendChild(songTitle);
+  card.appendChild(songYear);
+  card.appendChild(songDuration);
+
+  card.addEventListener('click', () => {
     console.log(`You clicked on "${song.title}" by ${artist.name}`);
   });
 
-  return row;
+  return card;
 }
 
 function formatDuration(duration) {
@@ -77,5 +121,5 @@ function generateArtistHeader(artist) {
   let linksHTML = artist.urls
     .map((link) => `<a href="${link.url}" target="_blank">${link.name}</a>`)
     .join(", ");
-  return `<strong>Songs by ${artist.name}</strong>: ${linksHTML}`;
+  return `<strong>Songs by ${artist.name}</strong> ${linksHTML}`;
 }

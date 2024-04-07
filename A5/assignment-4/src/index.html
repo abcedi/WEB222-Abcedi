@@ -1,72 +1,43 @@
 <!doctype html>
 <html lang="en-CA">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=500, initial-scale=1" />
-    <meta
-      name="description"
-      content="WEB222 Music App featuring a collection of curated songs from popular artists."
-    />
-    <meta name="author" content="Abcedi Ilacas" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=500, initial-scale=1" />
+  <meta name="description" content="WEB222 Music App featuring a collection of curated songs from popular artists." />
+  <meta name="author" content="Abcedi Ilacas" />
 
-    <title>RapWrld</title>
-    <!-- Classless CSS Stylesheet - https://watercss.kognise.dev/ -->
-    <link rel="stylesheet" href="./css/water.css" />
+  <title>RapWrld</title>
+  <!-- Classless CSS Stylesheet - https://watercss.kognise.dev/ -->
+  <link rel="stylesheet" href="./css/water.css" />
+</head>
+<body>
+  <header>
+    <h1>RapWRLD</h1>
+    <p>Navigating the Beats of the Streets.</p>
+    <p><a href="https://open.spotify.com/playlist/5yH65cZqj9uaWbALEKJduI?si=48f877725db941e0" target="_blank">Official RapWRLD Playlist</a></p>
+  </header>
 
-    <style>
-      body,
-      h1,
-      h2,
-      p,
-      nav,
-      table {
-        text-align: center;
-      }
-      table {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      nav#menu button {
-        margin: 0.5em;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>RapWrld</h1>
-      <p>Navigating the Beats of the Streets.</p>
-    </header>
+  <nav id="menu">
+    <!-- Menu category buttons will be created by app.js -->
+  </nav>
 
-    <nav id="menu">
-      <!-- Menu category buttons will be created by app.js -->
-    </nav>
+  <hr />
 
-    <hr />
+  <main>
+    <h2 id="selected-artist">
+      <!-- The selected artist's name and links will be dynamically inserted here -->
+    </h2>
 
-    <main>
-      <h2 id="selected-artist">
-        <!-- The selected artist's name and links will be dynamically inserted here -->
-      </h2>
+    <div id="card-container">
+      <!-- Card elements will be dynamically created by app.js -->
+    </div>
+  </main>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Year Released</th>
-            <th>Duration</th>
-          </tr>
-        </thead>
-        <tbody id="songs">
-          <!-- Song rows will be dynamically created by app.js -->
-        </tbody>
-      </table>
-    </main>
+  <!-- JavaScript Data Files -->
+  <script src="./js/artists.js"></script>
+  <script src="./js/songs.js"></script>
 
-    <!-- JavaScript Data Files -->
-    <script src="./js/artists.js"></script>
-    <script src="./js/songs.js"></script>
-
-    <!-- Main App JavaScript File -->
-    <script src="./js/app.js"></script>
-  </body>
+  <!-- Main App JavaScript File -->
+  <script src="./js/app.js"></script>
+</body>
 </html>

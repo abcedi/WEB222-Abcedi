@@ -1,18 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
- 
+<!-- We will write Assignment 5 (covering Weeks 10 and 11, HTML Forms and Form Validation) -->
+<!-- You are tasked with creating a sign-up form for a mailed subscription service. 
+
+Using HTML, create a form that sends data in a POST request to "/subscribe/new".
+
+The form should include the following inputs and labels:
+
+Name
+Email
+Phone number
+Address 
+Preference - i.e. drop-down list with options: "Sent daily" (value: 1), "Sent weekly" (value: 2), "Sent periodically" (value:3) 
+Only include the `<form> ... </form>` code block in your answer and don't forget the submit! -->
+<!doctype html>
+<html>
 <head>
-  <link rel="stylesheet" href="mystyle.css">
-  <title>Document</title>
+    <title>Assignment 5</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
- 
 <body>
-  <p>Some text here that should be underlined</p>
-  <div>
-    <button>click me</button>
-  </div>
-  <button class="button" id="button">click me</button>
-  <script src="script.js"></script>
-</body>
-  
+    <form action="/subscribe/new" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phone">Phone number:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        <label for="preference">Preference:</label>
+        <select id="preference" name="preference">
+            <option value="1">Sent daily</option>
+            <option value="2">Sent weekly</option>
+            <option value="3">Sent periodically</option>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
 </html>

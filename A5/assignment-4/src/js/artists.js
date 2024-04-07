@@ -11,7 +11,8 @@ window.artists = [
     urls: [
       { url: "https://www.liluziofficial.com/", name: "Official Website" },
       { url: "https://en.wikipedia.org/wiki/Lil_Uzi_Vert", name: "Wikipedia" }
-    ]
+    ],
+    imageUrl: "./imageURL/lil-uzi-vert.webp"
   },
   {
     artistId: "AID-2",
@@ -21,7 +22,8 @@ window.artists = [
       { url: "https://instagram.com/champagnepapi", name: "Instagram" },
       { url: "https://twitter.com/Drake", name: "Twitter" },
       { url: "https://en.wikipedia.org/wiki/Drake_(musician)", name: "Wikipedia" }
-    ]
+    ],
+    imageUrl: "./imageURL/drake.jpeg"
   },
   {
     artistId: "AID-3",
@@ -31,7 +33,8 @@ window.artists = [
       { url: "https://instagram.com/kanyewest", name: "Instagram" },
       { url: "https://twitter.com/kanyewest", name: "Twitter" },
       { url: "https://en.wikipedia.org/wiki/Kanye_West", name: "Wikipedia" }
-    ]
+    ],
+    imageUrl: "./imageURL/kanye-west.jpg"
   },
   {
     artistId: "AID-4",
@@ -41,7 +44,8 @@ window.artists = [
       { url: "https://instagram.com/feliciathegoat", name: "Instagram" },
       { url: "https://twitter.com/tylerthecreator", name: "Twitter" },
       { url: "https://en.wikipedia.org/wiki/Tyler,_the_Creator", name: "Wikipedia" }
-    ]
+    ],
+    imageUrl: "./imageURL/tyler-the-creator.webp"
   },
   {
     artistId: "AID-5",
@@ -51,6 +55,7 @@ window.artists = [
       { url: "https://instagram.com/21savage", name: "Instagram" },
       { url: "https://twitter.com/21savage", name: "Twitter" },
       { url: "https://en.wikipedia.org/wiki/21_Savage", name: "Wikipedia" }
-    ]
+    ],
+    imageUrl: "./imageURL/21-savage.webp"
   }
 ];
