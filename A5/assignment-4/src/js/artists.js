@@ -12,7 +12,7 @@ window.artists = [
       { url: "https://www.liluziofficial.com/", name: "Official Website" },
       { url: "https://en.wikipedia.org/wiki/Lil_Uzi_Vert", name: "Wikipedia" }
     ],
-    imageUrl: "./imageURL/lil-uzi-vert.webp"
+    imageUrl: "./imageURL/lil-uzi-vert.jpg"
   },
   {
     artistId: "AID-2",

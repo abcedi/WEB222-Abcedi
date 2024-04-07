@@ -1,5 +1,5 @@
 /**
- * WEB222 – Assignment 04
+ * WEB222 – Assignment 05
  *
  * I declare that this assignment is my own work in accordance with
  * Seneca Academic Policy. No part of this assignment has been
@@ -10,7 +10,7 @@
  *
  *      Name:       Abcedi Ilacas
  *      Student ID: 138180211
- *      Date:       19-03-2024
+ *      Date:       07-04-2024
  */
 
 // All of our data is available on the global `window` object.
@@ -21,51 +21,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const menu = document.getElementById("menu");
 
   // Dynamically create artist buttons and display the default artist's songs on page load
-  artists.forEach(artist => {
-    const button = document.createElement('button');
+  artists.forEach((artist) => {
+    const button = document.createElement("button");
     button.textContent = artist.name;
-    button.dataset.artistImage = artist.imageUrl; // Ensure imageUrl is provided in the artist object
-    button.addEventListener('click', () => {
+    button.dataset.artistImage = artist.imageUrl;
+    button.addEventListener("click", () => {
       displaySongsForArtist(artist.artistId);
-      document.getElementById('selected-artist').textContent = `Songs by ${artist.name}`;
+      document.getElementById("selected-artist").innerHTML = generateArtistHeader(artist);
     });
 
     // Set up the hover effect for each button
-    button.onmouseover = function() {
+    button.onmouseover = function () {
       this.style.backgroundImage = `url('${this.dataset.artistImage}')`;
-      this.style.backgroundSize = 'cover';
-      this.style.backgroundPosition = 'center';
-      this.style.backgroundRepeat = 'no-repeat';
-      this.style.opacity = '0.5';
+      this.style.backgroundSize = "cover";
+      this.style.backgroundPosition = "center";
+      this.style.backgroundRepeat = "no-repeat";
+      this.style.opacity = "0.5";
     };
 
-    button.onmouseout = function() {
-      this.style.backgroundImage = '';
-      this.style.opacity = '1';
+    button.onmouseout = function () {
+      this.style.backgroundImage = "";
+      this.style.opacity = "1";
     };
 
     menu.appendChild(button);
   });
 
-  // Display the first artist's songs by default, if there are any artists
   if (artists.length > 0) {
     displaySongsForArtist(artists[0].artistId);
   }
 });
 
 function displaySongsForArtist(artistId) {
-  const artist = artists.find(artist => artist.artistId === artistId);
-  const filteredSongs = songs.filter(song => song.artistId === artistId);
+  const artist = artists.find((artist) => artist.artistId === artistId);
+  const filteredSongs = songs.filter((song) => song.artistId === artistId);
   const cardContainerRef = document.getElementById("card-container");
   const selectedArtistElement = document.getElementById("selected-artist");
 
-  // Update the selected artist's name and social media links
   selectedArtistElement.innerHTML = generateArtistHeader(artist);
 
   // Clear previous song cards and display new ones
-  cardContainerRef.innerHTML = '';
-  filteredSongs.forEach(song => {
-    const songCard = createSongCard(song);
+  cardContainerRef.innerHTML = "";
+  filteredSongs.forEach((song) => {
+    const songCard = createSongCard(song, artist);
     cardContainerRef.appendChild(songCard);
   });
 }
@@ -78,8 +76,8 @@ function createSongCard(song, artist) {
   songImage.className = "song-image";
   songImage.src = song.imageUrl;
   songImage.alt = `Cover image for ${song.title}`;
-  songImage.style.cursor = 'pointer';
-  songImage.addEventListener('click', () => window.open(song.url, '_blank'));
+  songImage.style.cursor = "pointer";
+  songImage.addEventListener("click", () => window.open(song.url, "_blank"));
 
   const songTitle = document.createElement("h3");
   songTitle.textContent = song.title;
@@ -87,8 +85,8 @@ function createSongCard(song, artist) {
     const explicitIcon = document.createElement("img");
     explicitIcon.src = "./explicit.webp";
     explicitIcon.alt = "Explicit";
-    explicitIcon.style.height = '1em';
-    explicitIcon.style.verticalAlign = 'text-bottom';
+    explicitIcon.style.height = "1em";
+    explicitIcon.style.verticalAlign = "text-bottom";
     songTitle.appendChild(explicitIcon);
   }
 
@@ -98,13 +96,12 @@ function createSongCard(song, artist) {
   const songDuration = document.createElement("p");
   songDuration.textContent = `Duration: ${formatDuration(song.duration)}`;
 
-  // Append all the elements to the card
   card.appendChild(songImage);
   card.appendChild(songTitle);
   card.appendChild(songYear);
   card.appendChild(songDuration);
 
-  card.addEventListener('click', () => {
+  card.addEventListener("click", () => {
     console.log(`You clicked on "${song.title}" by ${artist.name}`);
   });
 
@@ -121,5 +118,6 @@ function generateArtistHeader(artist) {
   let linksHTML = artist.urls
     .map((link) => `<a href="${link.url}" target="_blank">${link.name}</a>`)
     .join(", ");
-  return `<strong>Songs by ${artist.name}</strong> ${linksHTML}`;
+  const headerHTML = `<strong>Songs by ${artist.name}</strong><br><span class="artist-links">${linksHTML}</span>`;
+  return headerHTML;
 }

@@ -1636,6 +1636,19 @@ body > footer {
   }
 }
 
+body,
+h1,
+h2,
+p,
+nav,
+table {
+  text-align: center;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #card-container {
   display: flex;
   flex-wrap: wrap;
@@ -1661,18 +1674,16 @@ body > footer {
 nav#menu button {
   margin: 0.5em;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 nav#menu button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('path-to-artist-image.jpg') no-repeat center center; 
-  background-size: cover;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -1690,4 +1701,8 @@ header a {
 header a:hover {
   text-decoration: underline;
   color: #0056b3;
+}
+
+.artist-links {
+  font-size: 0.8em;
 }
