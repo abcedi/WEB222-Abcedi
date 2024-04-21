@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=500, initial-scale=1" />
+    <meta
+      name="description"
+      content="WEB222 Music App featuring a collection of curated songs from popular artists."
+    />
+    <meta name="author" content="Abcedi Ilacas" />
+
+    <title>RapWRLD</title>
+    <!-- Classless CSS Stylesheet - https://watercss.kognise.dev/ -->
+    <link rel="stylesheet" href="./css/water.css" />
+  </head>
+  <body>
+    <header>
+      <h1>RapWRLD</h1>
+      <p>Navigating the Beats of the Streets.</p>
+      <p>
+        <a
+          href="https://open.spotify.com/playlist/5yH65cZqj9uaWbALEKJduI?si=48f877725db941e0"
+          target="_blank"
+          >Official RapWRLD Playlist</a
+        >
+      </p>
+    </header>
+
+    <nav id="menu">
+      <!-- Menu category buttons will be created by app.js -->
+      <a href="request.html">Request a New Artist</a>
+    </nav>
+
+    <hr />
+
+    <main>
+      <h2 id="selected-artist">
+        <!-- The selected artist's name and links will be dynamically inserted here -->
+      </h2>
+
+      <div id="card-container">
+        <!-- Card elements will be dynamically created by app.js -->
+      </div>
+    </main>
+
+    <footer>
+      <form id="newsletter-form" action="https://httpbin.org/post" method="POST">
+        <div class="newsletter-wrapper">
+          <label for="email">Subscribe to Our Newsletter:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address.">
+          <input type="submit" value="Subscribe">
+        </div>
+      </form>
+      <p class="copyright-text">
+        © 2024 RapWRLD. All rights are reserved by their respective owners. I do not own any content on this page.
+      </p>
+    </footer>
+
+    <!-- JavaScript Data Files -->
+    <script src="./js/artists.js"></script>
+    <script src="./js/songs.js"></script>
+
+    <!-- Main App JavaScript File -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>
