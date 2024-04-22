@@ -1821,3 +1821,8 @@ input[type="submit"]:hover, button:hover {
     flex-direction: column;
   }
 }
+
+.request-link-wrapper {
+  text-align: center; /* Center the link */
+  margin-top: 10px; /* Space from the last artist button */
+}

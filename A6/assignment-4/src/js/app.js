@@ -46,9 +46,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
     menu.appendChild(button);
   });
+  
+  const requestLinkWrapper = document.createElement("div");
+  requestLinkWrapper.className = "request-link-wrapper";
+  const requestLink = document.createElement("a");
+  requestLink.href = "request.html";
+  requestLink.textContent = "Request a New Artist";
+  requestLinkWrapper.appendChild(requestLink);
+  menu.appendChild(requestLinkWrapper);
 
   if (artists.length > 0) {
     displaySongsForArtist(artists[0].artistId);
+  }
+
+  // Add music URL event listener
+  const addMusicUrlButton = document.getElementById("add-music-url");
+  if (addMusicUrlButton) {
+    addMusicUrlButton.addEventListener("click", function () {
+      const newInput = document.createElement("input");
+      newInput.type = "url";
+      newInput.name = "music-urls";
+      const wrapper = document.getElementById("music-urls-wrapper");
+      wrapper.appendChild(newInput);
+    });
+  }
+
+  // Add social URL event listener
+  const addSocialUrlButton = document.getElementById("add-social-url");
+  if (addSocialUrlButton) {
+    addSocialUrlButton.addEventListener("click", function () {
+      const newInput = document.createElement("input");
+      newInput.type = "url";
+      newInput.name = "social-urls";
+      const wrapper = document.getElementById("social-urls-wrapper");
+      wrapper.appendChild(newInput);
+    });
   }
 });
 
